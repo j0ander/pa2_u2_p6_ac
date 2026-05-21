@@ -43,6 +43,12 @@ public class Estudiante {
         this.fechaNacimiento = fechaNacimiento;
         this.genero = genero;
     }
+    public Estudiante( String nombre, String apellido, LocalDate fechaNacimiento, String genero) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNacimiento = fechaNacimiento;
+        this.genero = genero;
+    }
 
     public Integer getId() {
         return id;
@@ -83,5 +89,12 @@ public class Estudiante {
     public void setGenero(String genero) {
         this.genero = genero;
     }
+
+    @Override
+    public String toString() {
+        return "Estudiante [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiento="
+                + fechaNacimiento + ", genero=" + genero + "]";
+    }
+    
     
 }
