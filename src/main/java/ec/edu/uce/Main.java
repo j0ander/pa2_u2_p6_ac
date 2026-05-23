@@ -9,7 +9,6 @@ import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
 import jakarta.inject.Inject;
 
-
 @QuarkusMain
 public class Main {
 
@@ -21,15 +20,21 @@ public class Main {
     public static class App implements QuarkusApplication {
         @Inject
         private EstudianteService estudianteService;
+
         @Override
         public int run(String... args) {
             System.out.println("Conexion a base de datos");
-            Estudiante est = new Estudiante("Anderson", "Chancusi", LocalDate.of(2005, 1, 29), "ads");
-            Estudiante est1 = new Estudiante(2,"Anderson", "Chancusi", LocalDate.of(2005, 1, 29), "Maculino");
-            estudianteService.guardar(est);
-            estudianteService.eliminar(3);
-            //estudianteService.actualizar(est1);
-            System.out.println(estudianteService.buscar(2).toString());
+            Estudiante est = new Estudiante("Joel", "Chancusi", LocalDate.of(2005, 1, 29), "ads");
+            Estudiante est1 = new Estudiante(2, "Anderson", "Chancusi", LocalDate.of(2005, 1, 29), "Maculino");
+            //estudianteService.guardar(est);
+            // estudianteService.eliminar(3);
+            // estudianteService.actualizar(est1);
+            // System.out.println(estudianteService.buscar(2).toString());
+            
+            //estudianteService.buscarTodos().forEach(x ->  System.out.println(x.toString()));
+            
+            //estudianteService.consultarPorNombre("Anderson").forEach(x -> System.out.println(x.toString()));
+            System.out.println(estudianteService.consultarPorCedula("1751652809").toString());
             return 0;
 
         }
