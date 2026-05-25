@@ -1,5 +1,7 @@
 package ec.edu.uce.domain.repository;
 
+import java.util.List;
+
 import ec.edu.uce.domain.model.Estudiante;
 
 public interface EstudianteRepository {
@@ -10,4 +12,10 @@ public interface EstudianteRepository {
     void actualizar(Estudiante estudiante);
 
     void eliminar(Integer id);
+
+    List<Estudiante> seleccionarTodos();
+
+    List<Estudiante> seleccionarPorNombre(String nombre);
+
+    Estudiante seleccionarPorCedula(String cedula);
 }
