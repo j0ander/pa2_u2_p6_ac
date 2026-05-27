@@ -1,10 +1,13 @@
 package ec.edu.uce.infrestructure.repository;
 
+import java.util.List;
+
 import ec.edu.uce.domain.model.Profesor;
 import ec.edu.uce.domain.repository.ProfesorRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
 @ApplicationScoped
@@ -35,5 +38,25 @@ public class ProfesorRepositoryImpl implements ProfesorRepository {
 
     public Profesor seleccionarPorId(Integer id) {
         return this.em.find(Profesor.class, id);
+    }
+
+    @Override
+    public List<Profesor> seleccionarTodos() {
+        TypedQuery<Profesor> miQuery = this.em.createQuery("Select p from Profesor p", Profesor.class);
+        return miQuery.getResultList();
+    }
+
+    @Override
+    public List<String> seleccionarNombresPorMateria(String materia) {
+        TypedQuery<String> miQuery = this.em.createQuery("Select p.nombre from Profesor p Where p.materia = :materia", String.class);
+        miQuery.setParameter("materia", materia);
+        return miQuery.getResultList();
+    }
+
+    @Override
+    public Profesor seleccionarPorNumeroFinalCedula(Integer cedula) {
+        TypedQuery<Profesor> miQuery = this.em.createQuery("Select p from Profesor p Where cast(p.cedula as string) Like :cedula", Profesor.class);
+        miQuery.setParameter("cedula", "%" + cedula);
+        return miQuery.getResultList().getFirst();
     }
 }
