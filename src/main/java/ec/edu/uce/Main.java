@@ -29,7 +29,7 @@ public class Main {
             estudianteService.guardar(est);
             estudianteService.eliminar(3);
             //estudianteService.actualizar(est1);
-            System.out.println(estudianteService.buscar(2).toString());
+            //System.out.println(estudianteService.buscar(2).toString());
             return 0;
 
         }
