@@ -34,7 +34,7 @@ public class Main {
             //estudianteService.buscarTodos().forEach(x ->  System.out.println(x.toString()));
             
             //estudianteService.consultarPorNombre("Anderson").forEach(x -> System.out.println(x.toString()));
-            System.out.println(estudianteService.consultarPorCedula("1751652809").toString());
+            //System.out.println(estudianteService.consultarPorCedula("1751652809").toString());
             return 0;
 
         }
