@@ -7,11 +7,20 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity // Anotación para indicar que esta clase es una entidad de JPA
 @Table(name = "estudiante") // Anotación para especificar el nombre de la tabla en la base de datos
+@NamedQueries({
+    @NamedQuery(name ="Estudiante.buscarPorGenero", query="Select e From Estudiante e Where e.genero = :genero"), 
+    @NamedQuery(name ="Estudiante.buscarPorApellido", query="Select e From Estudiante e Where e.apellido = :apellido")
+    ,@NamedQuery(name ="Estudiante.buscarPorRangoFecha", query="Select e From Estudiante e Where e.fechaNacimiento Between :inicio and :fin")
+    ,@NamedQuery(name ="Estudiante.contar", query="Select Count(e) From Estudiante e ")
+
+})
 public class Estudiante {
     // cada atributo de la clase representa una columna en la tabla de la base de
     // datos
@@ -65,7 +74,7 @@ public class Estudiante {
         this.fechaNacimiento = fechaNacimiento;
         this.genero = genero;
     }
-    
+
     public Estudiante(Integer id, String nombre, String apellido, LocalDate fechaNacimiento, String genero,
             String cedula) {
         this.id = id;
@@ -115,8 +124,6 @@ public class Estudiante {
     public void setGenero(String genero) {
         this.genero = genero;
     }
-    
-    
 
     @Override
     public String toString() {

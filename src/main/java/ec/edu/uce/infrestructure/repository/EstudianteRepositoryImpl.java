@@ -1,5 +1,6 @@
 package ec.edu.uce.infrestructure.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import ec.edu.uce.domain.model.Estudiante;
@@ -7,6 +8,7 @@ import ec.edu.uce.domain.repository.EstudianteRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
@@ -39,6 +41,7 @@ public class EstudianteRepositoryImpl implements EstudianteRepository{
         return this.em.find(Estudiante.class, id);
     }
 
+    //1 Query
     //1.1 TYPEDQUERY
 
     @Override
@@ -63,6 +66,37 @@ public class EstudianteRepositoryImpl implements EstudianteRepository{
         //return miQuery.getResultList().getFirst();
         return miQuery.getResultList().getLast();
     }
+
+    //1.2 Named Query
+
+    @Override
+    public List<Estudiante> seleccionarPorGenero(String genero) {
+        Query myQuery = this.em.createNamedQuery("Estudiante.buscarPorGenero");
+        myQuery.setParameter("genero", genero);
+        return (List<Estudiante>) myQuery.getResultList();
+    }
+
+    @Override
+    public List<Estudiante> seleccionarPorGeneroTyped(String genero) {
+        TypedQuery<Estudiante> myQuery = this.em.createNamedQuery("Estudiante.buscarPorGenero", Estudiante.class);
+        myQuery.setParameter("genero", genero);
+        return myQuery.getResultList();
+    }
+
+    @Override
+    public List<Estudiante> seleccionarPorRangoFechas(LocalDate fechaInicio, LocalDate fechaFin) {
+        TypedQuery<Estudiante> myQuery = this.em.createNamedQuery("Estudiante.buscarPorRangoFecha", Estudiante.class);
+        myQuery.setParameter("inicio", fechaInicio);
+        myQuery.setParameter("fin", fechaFin);
+        return myQuery.getResultList();
+    }
+
+    @Override
+    public Long seleccionarContar() {
+        TypedQuery<Long> myQuery = this.em.createNamedQuery("Estudiante.contar", Long.class);
+        return myQuery.getSingleResult();
+    }
+
 
     
 
