@@ -96,6 +96,14 @@ public class EstudianteRepositoryImpl implements EstudianteRepository{
         TypedQuery<Long> myQuery = this.em.createNamedQuery("Estudiante.contar", Long.class);
         return myQuery.getSingleResult();
     }
+    //2 NativeQuery
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Estudiante> seleccionarTodosNative() {
+        Query myQuery = this.em.createNativeQuery("Select * from estudiante", Estudiante.class); //SQL PURO
+        return myQuery.getResultList(); 
+    }
+
 
 
     

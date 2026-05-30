@@ -24,4 +24,6 @@ public interface EstudianteRepository {
     List<Estudiante> seleccionarPorGeneroTyped(String genero);
     List<Estudiante> seleccionarPorRangoFechas(LocalDate fechaInicio, LocalDate fechaFin);
     Long seleccionarContar();
+
+    List<Estudiante> seleccionarTodosNative();
 }

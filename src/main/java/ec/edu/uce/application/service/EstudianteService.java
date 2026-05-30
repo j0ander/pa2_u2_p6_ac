@@ -32,15 +32,15 @@ public class EstudianteService {
     public List<Estudiante> buscarTodos(){
         return this.estudianteRepository.seleccionarTodos();
     }
-
+    
     public List<Estudiante> consultarPorNombre(String nombre){
         return this.estudianteRepository.seleccionarPorNombre(nombre);
     }
-
+    
     public Estudiante consultarPorCedula(String cedula){
         return this.estudianteRepository.seleccionarPorCedula(cedula);
     }
-
+    
     public List<Estudiante> consultarPorGenero(String genero){
         return this.estudianteRepository.seleccionarPorGenero(genero);
     }
@@ -50,11 +50,14 @@ public class EstudianteService {
     public List<Estudiante> consultarPorRangoFechas(LocalDate fechaInicio, LocalDate fechaFin){
         return this.estudianteRepository.seleccionarPorRangoFechas(fechaInicio, fechaFin);
     }
-
+    
     public Long contar(){
         return this.estudianteRepository.seleccionarContar();
     }
-
+    
+    public List<Estudiante> buscarTodosNative(){
+        return this.estudianteRepository.seleccionarTodosNative();
+    }
    
 
   
