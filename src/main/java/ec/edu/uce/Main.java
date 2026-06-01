@@ -23,10 +23,11 @@ public class Main {
         @Override
         public int run(String... args) {
             System.out.println("Conexion a base de datos");
-            this.profesorService.consultarNombrePorMateria("Base de Datos")
+            this.profesorService.buscarTodosNative().forEach(x -> System.out.println(x.toString()));
+            this.profesorService.consultarNombrePorMateriaNative("Base de Datos")
                     .forEach(x -> System.out.println(x.toString()));
-            this.profesorService.consultarNombrePorInicial("J").forEach(x -> System.out.println(x.toString()));
-            this.profesorService.contarPorApellidos().forEach(x -> {
+            System.out.println(this.profesorService.consultarPorNumeroFinalCedulaNative(8).toString());
+            this.profesorService.contarPorApellidosNative().forEach(x -> {
                 String apellido = (String) x[0];
                 Long cantidad = (Long) x[1];
                 System.out.println("Apellido: " + apellido + " - Cantidad: " + cantidad);

@@ -33,13 +33,22 @@ public class ProfesorService {
     public List<Profesor> buscarTodos(){
         return profesorRepository.seleccionarTodos();
     }
+    public List<Profesor> buscarTodosNative(){
+        return profesorRepository.seleccionarTodosNative();
+    }
 
     public List<String> consultarNombrePorMateria(String materia){
         return profesorRepository.seleccionarNombresPorMateria(materia);
     }
+    public List<String> consultarNombrePorMateriaNative(String materia){
+        return profesorRepository.seleccionarNombresPorMateriaNative(materia);
+    }
 
     public Profesor consultarPorNumeroFinalCedula(Integer cedula){
         return profesorRepository.seleccionarPorNumeroFinalCedula(cedula);
+    }
+    public Profesor consultarPorNumeroFinalCedulaNative(Integer cedula){
+        return profesorRepository.seleccionarPorNumeroFinalCedulaNative(cedula);
     }
 
     public List<Profesor> consultarPorMateria(String materia){
@@ -52,4 +61,9 @@ public class ProfesorService {
     public List<Object[]> contarPorApellidos(){
         return profesorRepository.contarPorApellido();
     }
+    public List<Object[]> contarPorApellidosNative(){
+        return profesorRepository.contarPorApellidoNative();
+    }
+
+    
 }

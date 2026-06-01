@@ -23,4 +23,10 @@ public interface ProfesorRepository {
     List<Profesor> seleccionarPorMateria(String materia);
     List<Profesor> seleccionarPorInicialNombre(String inicial);
     List<Object[]> contarPorApellido();
+
+    List<Profesor> seleccionarTodosNative();
+    List<String> seleccionarNombresPorMateriaNative(String materia);
+    Profesor seleccionarPorNumeroFinalCedulaNative(Integer cedula);
+    List<Object[]> contarPorApellidoNative();
+
 }
