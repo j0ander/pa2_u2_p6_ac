@@ -59,4 +59,24 @@ public class ProfesorRepositoryImpl implements ProfesorRepository {
         miQuery.setParameter("cedula", "%" + cedula);
         return miQuery.getResultList().getFirst();
     }
+
+    @Override
+    public List<Profesor> seleccionarPorMateria(String materia) {
+        TypedQuery<Profesor> mQuery = this.em.createNamedQuery("Profesor.buscarPorMateria", Profesor.class);
+        mQuery.setParameter("materia", materia);
+        return mQuery.getResultList();
+    }
+
+    @Override
+    public List<Profesor> seleccionarPorInicialNombre(String inicial) {
+        TypedQuery<Profesor> mQuery = this.em.createNamedQuery("Profesor.buscarPorInicialNombre", Profesor.class);
+        mQuery.setParameter("inicial", inicial + "%");
+        return mQuery.getResultList();
+    }
+
+    @Override
+    public List<Object[]> contarPorApellido() {
+        TypedQuery<Object[]> mQuery = this.em.createNamedQuery("Profesor.contarPorApellido", Object[].class);
+        return mQuery.getResultList();
+    }
 }

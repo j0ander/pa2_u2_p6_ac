@@ -34,11 +34,22 @@ public class ProfesorService {
         return profesorRepository.seleccionarTodos();
     }
 
-    public List<String> consultarPorMateria(String materia){
+    public List<String> consultarNombrePorMateria(String materia){
         return profesorRepository.seleccionarNombresPorMateria(materia);
     }
 
     public Profesor consultarPorNumeroFinalCedula(Integer cedula){
         return profesorRepository.seleccionarPorNumeroFinalCedula(cedula);
+    }
+
+    public List<Profesor> consultarPorMateria(String materia){
+        return profesorRepository.seleccionarPorMateria(materia);
+    }
+
+    public List<Profesor> consultarNombrePorInicial(String inicial){
+        return profesorRepository.seleccionarPorInicialNombre(inicial);
+    }
+    public List<Object[]> contarPorApellidos(){
+        return profesorRepository.contarPorApellido();
     }
 }

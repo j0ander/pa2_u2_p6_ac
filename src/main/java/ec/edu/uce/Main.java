@@ -1,6 +1,5 @@
 package ec.edu.uce;
 
-
 import ec.edu.uce.application.service.EstudianteService;
 import ec.edu.uce.application.service.ProfesorService;
 import ec.edu.uce.domain.model.Profesor;
@@ -20,12 +19,18 @@ public class Main {
     public static class App implements QuarkusApplication {
         @Inject
         private ProfesorService profesorService;
+
         @Override
         public int run(String... args) {
             System.out.println("Conexion a base de datos");
-            //profesorService.buscarTodos().forEach(x -> System.out.println(x.toString()));
-            //profesorService.consultarPorMateria("Base de Datos").forEach(x -> System.out.println(x.toString()));
-            System.out.println(profesorService.consultarPorNumeroFinalCedula(78).toString());
+            this.profesorService.consultarNombrePorMateria("Base de Datos")
+                    .forEach(x -> System.out.println(x.toString()));
+            this.profesorService.consultarNombrePorInicial("J").forEach(x -> System.out.println(x.toString()));
+            this.profesorService.contarPorApellidos().forEach(x -> {
+                String apellido = (String) x[0];
+                Long cantidad = (Long) x[1];
+                System.out.println("Apellido: " + apellido + " - Cantidad: " + cantidad);
+            });
             return 0;
 
         }

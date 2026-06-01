@@ -1,15 +1,26 @@
 package ec.edu.uce.domain.model;
 
+import org.hibernate.annotations.NativeGenerator;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "profesor")
+@NamedQueries({
+    @NamedQuery(name= "Profesor.buscarPorMateria", query = "Select p from Profesor p where p.materia = :materia"),
+    @NamedQuery(name= "Profesor.buscarPorInicialNombre", query = "Select p from Profesor p where p.nombre ilike :inicial "),
+    @NamedQuery(name= "Profesor.contarPorApellido", query = "Select p.apellido, COUNT(p) from Profesor p GROUP BY p.apellido")
+
+}
+)
 public class Profesor {
 
     @Id
