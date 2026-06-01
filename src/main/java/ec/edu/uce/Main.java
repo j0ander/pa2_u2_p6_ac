@@ -28,7 +28,7 @@ public class Main {
             Estudiante est1 = new Estudiante(2, "Anderson", "Chancusi", LocalDate.of(2005, 1, 29), "Maculino");
            
             //Native Query
-            this.estudianteService.buscarTodosNative().forEach(x -> System.out.println(x.toString()));
+            //this.estudianteService.buscarTodosNative().forEach(x -> System.out.println(x.toString()));
             return 0;
 
         }
