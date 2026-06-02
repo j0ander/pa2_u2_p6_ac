@@ -21,9 +21,19 @@ public interface EstudianteRepository {
     Estudiante seleccionarPorCedula(String cedula);
 
     List<Estudiante> seleccionarPorGenero(String genero);
+
     List<Estudiante> seleccionarPorGeneroTyped(String genero);
+
     List<Estudiante> seleccionarPorRangoFechas(LocalDate fechaInicio, LocalDate fechaFin);
+
     Long seleccionarContar();
 
     List<Estudiante> seleccionarTodosNative();
+
+    List<Estudiante> seleccionarTodosCriteria();
+
+    List<Estudiante> seleccionarPorNombreCriteria(String nombre);
+
+    List<Estudiante> seleccionarDinamicoCriteria(String nombre,  String apellido);
+
 }

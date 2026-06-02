@@ -13,53 +13,65 @@ public class EstudianteService {
     @Inject
     private EstudianteRepository estudianteRepository;
 
-    public void guardar(Estudiante estudiante){
+    public void guardar(Estudiante estudiante) {
         this.estudianteRepository.crear(estudiante);
     }
 
-    public void actualizar(Estudiante estudiante){
+    public void actualizar(Estudiante estudiante) {
         this.estudianteRepository.actualizar(estudiante);
     }
 
-    public Estudiante buscar(Integer id){
+    public Estudiante buscar(Integer id) {
         return this.estudianteRepository.seleccionarPorId(id);
-        
+
     }
-    public void eliminar(Integer id){
+
+    public void eliminar(Integer id) {
         this.estudianteRepository.eliminar(id);
     }
 
-    public List<Estudiante> buscarTodos(){
+    public List<Estudiante> buscarTodos() {
         return this.estudianteRepository.seleccionarTodos();
     }
-    
-    public List<Estudiante> consultarPorNombre(String nombre){
+
+    public List<Estudiante> consultarPorNombre(String nombre) {
         return this.estudianteRepository.seleccionarPorNombre(nombre);
     }
-    
-    public Estudiante consultarPorCedula(String cedula){
+
+    public Estudiante consultarPorCedula(String cedula) {
         return this.estudianteRepository.seleccionarPorCedula(cedula);
     }
-    
-    public List<Estudiante> consultarPorGenero(String genero){
+
+    public List<Estudiante> consultarPorGenero(String genero) {
         return this.estudianteRepository.seleccionarPorGenero(genero);
     }
-    public List<Estudiante> consultarPorGeneroTyped(String genero){
+
+    public List<Estudiante> consultarPorGeneroTyped(String genero) {
         return this.estudianteRepository.seleccionarPorGeneroTyped(genero);
     }
-    public List<Estudiante> consultarPorRangoFechas(LocalDate fechaInicio, LocalDate fechaFin){
+
+    public List<Estudiante> consultarPorRangoFechas(LocalDate fechaInicio, LocalDate fechaFin) {
         return this.estudianteRepository.seleccionarPorRangoFechas(fechaInicio, fechaFin);
     }
-    
-    public Long contar(){
+
+    public Long contar() {
         return this.estudianteRepository.seleccionarContar();
     }
-    
-    public List<Estudiante> buscarTodosNative(){
+
+    public List<Estudiante> buscarTodosNative() {
         return this.estudianteRepository.seleccionarTodosNative();
     }
-   
 
-  
+    public List<Estudiante> buscarTodosCriteria() {
+        return this.estudianteRepository.seleccionarTodosCriteria();
+    }
+
+    public List<Estudiante> consultarPorNombreCriteria(String nombre) {
+        return this.estudianteRepository.seleccionarPorNombreCriteria(nombre);
+    }
+
+    public List<Estudiante> consultaDinamicoCriteria(String nombre,  String apellido){
+        return this.estudianteRepository.seleccionarDinamicoCriteria(nombre, apellido);
+    }
 
 }
