@@ -65,5 +65,18 @@ public class ProfesorService {
         return profesorRepository.contarPorApellidoNative();
     }
 
+    public List<Profesor> consultarPorMateriaCriteria(String materia){
+        return profesorRepository.seleccionarPorMateriaCriteria(materia);
+    }
+
+    public List<Profesor> consultarNombrePorInicialCriteria(String inicial){
+        return profesorRepository.seleccionarPorInicialNombreCriteria(inicial);
+    }
+    public List<Object[]> contarPorApellidosCriteria(){
+        return profesorRepository.contarPorApellidoCriteria();
+    }
+    public List<Profesor> consultarDinamicaCriteria(String nombre, String apellido, String materia){
+        return profesorRepository.buscarCriteriaDinamico(nombre, apellido, materia);
+    }
     
 }

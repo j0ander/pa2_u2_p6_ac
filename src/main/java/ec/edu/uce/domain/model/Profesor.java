@@ -1,6 +1,5 @@
 package ec.edu.uce.domain.model;
 
-import org.hibernate.annotations.NativeGenerator;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -29,4 +29,10 @@ public interface ProfesorRepository {
     Profesor seleccionarPorNumeroFinalCedulaNative(Integer cedula);
     List<Object[]> contarPorApellidoNative();
 
+    List<Profesor> seleccionarPorMateriaCriteria(String materia);
+    List<Profesor> seleccionarPorInicialNombreCriteria(String inicial);
+    List<Object[]> contarPorApellidoCriteria();
+    List<Profesor> buscarCriteriaDinamico(String nombre, String apellido, String materia);
+ 
+
 }

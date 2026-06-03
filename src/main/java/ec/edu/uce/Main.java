@@ -1,8 +1,6 @@
 package ec.edu.uce;
 
-import ec.edu.uce.application.service.EstudianteService;
 import ec.edu.uce.application.service.ProfesorService;
-import ec.edu.uce.domain.model.Profesor;
 import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
@@ -23,18 +21,29 @@ public class Main {
         @Override
         public int run(String... args) {
             System.out.println("Conexion a base de datos");
-            this.profesorService.buscarTodosNative().forEach(x -> System.out.println(x.toString()));
-            this.profesorService.consultarNombrePorMateriaNative("Base de Datos")
+            this.profesorService.consultarPorMateriaCriteria("Base de Datos")
                     .forEach(x -> System.out.println(x.toString()));
-            System.out.println(this.profesorService.consultarPorNumeroFinalCedulaNative(8).toString());
-            this.profesorService.contarPorApellidosNative().forEach(x -> {
+            this.profesorService.consultarNombrePorInicialCriteria("a").forEach(x -> System.out.println(x.toString()));
+            this.profesorService.contarPorApellidosCriteria().forEach(x -> {
                 String apellido = (String) x[0];
                 Long cantidad = (Long) x[1];
-                System.out.println("Apellido: " + apellido + " - Cantidad: " + cantidad);
+
+                System.out.println(apellido + " -> " + cantidad);
             });
+
+            this.profesorService.consultarDinamicaCriteria(null, null, null)
+                    .forEach(x -> System.out.println(x.toString()));
+            this.profesorService.consultarDinamicaCriteria("Anderson", null, null)
+                    .forEach(x -> System.out.println(x.toString()));
+            this.profesorService.consultarDinamicaCriteria("Anderson", "Chancusi", null)
+                    .forEach(x -> System.out.println(x.toString()));
+            this.profesorService.consultarDinamicaCriteria("Anderson", "Chancusi", "Programacion")
+                    .forEach(x -> System.out.println(x.toString()));
+            this.profesorService.consultarDinamicaCriteria(null, null, "Programacion")
+                    .forEach(x -> System.out.println(x.toString()));
+
             return 0;
 
         }
     }
-
 }
