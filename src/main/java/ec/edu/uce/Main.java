@@ -25,7 +25,7 @@ public class Main {
         public int run(String... args) {
             //System.out.println("Conexion a base de datos");
             Estudiante est = new Estudiante("Anderson", "Chancusi", LocalDate.of(2005, 1, 29), "ads");
-            Estudiante est1 = new Estudiante(2,"Anderson", "Chancusi", LocalDate.of(2005, 1, 29), "Maculino");
+            //Estudiante est1 = new Estudiante(2,"Anderson", "Chancusi", LocalDate.of(2005, 1, 29), "Maculino");
             estudianteService.guardar(est);
             estudianteService.eliminar(3);
             //estudianteService.actualizar(est1);
