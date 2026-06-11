@@ -1,6 +1,9 @@
 package ec.edu.uce;
 
-import ec.edu.uce.application.service.EstudianteService;
+import java.time.LocalDateTime;
+
+import ec.edu.uce.application.service.CiudadanoService;
+import ec.edu.uce.domain.model.Ciudadano;
 import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
@@ -15,26 +18,16 @@ public class Main {
     }
 
     public static class App implements QuarkusApplication {
+    
+
         @Inject
-        private EstudianteService estudianteService;
+        private CiudadanoService ciudadanoService;
 
         @Override
         public int run(String... args) {
             System.out.println("Conexion a base de datos");
-            //Estudiante est = new Estudiante("Joel", "Chancusi", LocalDate.of(2005, 1, 29), "ads");
-            //Estudiante est1 = new Estudiante(2, "Anderson", "Chancusi", LocalDate.of(2005, 1, 29), "Maculino");
-            //Criteria API Query
-            this.estudianteService.buscarTodosCriteria().forEach(x -> System.out.println(x.toString()));
-            
-            this.estudianteService.consultarPorNombreCriteria("Anderson").forEach(x -> System.out.println(x.toString()));
-            System.out.println("Nombre y Apellido ---------------------------------------------------------------------------------------------");
-            this.estudianteService.consultaDinamicoCriteria("Joel", "Chancusi").forEach(x -> System.out.println(x.toString()));
-            System.out.println("Solo el nombre ---------------------------------------------------------------------------------------------");
-            this.estudianteService.consultaDinamicoCriteria("Joel", null).forEach(x -> System.out.println(x.toString()));
-            System.out.println("Solo el apellido ---------------------------------------------------------------------------------------------");
-            this.estudianteService.consultaDinamicoCriteria(null, "Chancusi").forEach(x -> System.out.println(x.toString()));
-            System.out.println("Todo null ---------------------------------------------------------------------------------------------");
-            this.estudianteService.consultaDinamicoCriteria(null, null).forEach(x -> System.out.println(x.toString()));
+            Ciudadano cd = new Ciudadano( "Anderson", LocalDateTime.now());
+            ciudadanoService.guardar(cd);
             return 0;
 
         }
