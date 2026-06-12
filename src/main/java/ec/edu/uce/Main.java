@@ -1,6 +1,8 @@
 package ec.edu.uce;
 
+import ec.edu.uce.application.service.CiudadanoService;
 import ec.edu.uce.application.service.ProfesorService;
+import ec.edu.uce.domain.model.Ciudadano;
 import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
@@ -16,32 +18,13 @@ public class Main {
 
     public static class App implements QuarkusApplication {
         @Inject
-        private ProfesorService profesorService;
+        private CiudadanoService cs;
 
         @Override
         public int run(String... args) {
             System.out.println("Conexion a base de datos");
-            this.profesorService.consultarPorMateriaCriteria("Base de Datos")
-                    .forEach(x -> System.out.println(x.toString()));
-            this.profesorService.consultarNombrePorInicialCriteria("a").forEach(x -> System.out.println(x.toString()));
-            this.profesorService.contarPorApellidosCriteria().forEach(x -> {
-                String apellido = (String) x[0];
-                Long cantidad = (Long) x[1];
-
-                System.out.println(apellido + " -> " + cantidad);
-            });
-
-            this.profesorService.consultarDinamicaCriteria(null, null, null)
-                    .forEach(x -> System.out.println(x.toString()));
-            this.profesorService.consultarDinamicaCriteria("Anderson", null, null)
-                    .forEach(x -> System.out.println(x.toString()));
-            this.profesorService.consultarDinamicaCriteria("Anderson", "Chancusi", null)
-                    .forEach(x -> System.out.println(x.toString()));
-            this.profesorService.consultarDinamicaCriteria("Anderson", "Chancusi", "Programacion")
-                    .forEach(x -> System.out.println(x.toString()));
-            this.profesorService.consultarDinamicaCriteria(null, null, "Programacion")
-                    .forEach(x -> System.out.println(x.toString()));
-
+            Ciudadano cd = new Ciudadano("Anderson", "1751652809");
+            this.cs.guardar(cd);
             return 0;
 
         }
