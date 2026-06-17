@@ -1,5 +1,8 @@
 package ec.edu.uce.domain.model;
 
+import java.time.LocalDateTime;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,7 +25,7 @@ public class Pasaporte {
     private String numeroPasaporte;
     @Column(name = "pas_fecha_nacimiento")
     private String fechaVencimiento;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "pas_ciudadano")
     private Ciudadano ciudadano;
 
@@ -31,6 +34,13 @@ public class Pasaporte {
         this.numeroPasaporte = numeroPasaporte;
         this.fechaVencimiento = fechaVencimiento;
     }
+
+    public Pasaporte(String numeroPasaporte, String fechaVencimiento, Ciudadano ciudadano) {
+        this.numeroPasaporte = numeroPasaporte;
+        this.fechaVencimiento = fechaVencimiento;
+        this.ciudadano = ciudadano;
+    }
+
 
     public Integer getId() {
         return id;
