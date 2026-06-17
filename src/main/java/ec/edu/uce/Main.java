@@ -27,7 +27,7 @@ public class Main {
             Estudiante est = new Estudiante("Anderson", "Chancusi", LocalDate.of(2005, 1, 29), "ads");
             //Estudiante est1 = new Estudiante(2,"Anderson", "Chancusi", LocalDate.of(2005, 1, 29), "Maculino");
             //estudianteService.guardar(est);
-            estudianteService.eliminar(3);
+            //estudianteService.eliminar(3);
             //estudianteService.actualizar(est1);
             //System.out.println(estudianteService.buscar(2).toString());
             return 0;
