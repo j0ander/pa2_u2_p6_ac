@@ -16,4 +16,9 @@ public class PeliculaRepositoryImpl implements PeliculaRepository{
     public void crear(Pelicula pelicula) {
         this.em.persist(pelicula);
     }
+
+    @Override
+    public Pelicula consultarPorId(Integer id) {
+        return this.em.find(Pelicula.class, id);
+    }
 }

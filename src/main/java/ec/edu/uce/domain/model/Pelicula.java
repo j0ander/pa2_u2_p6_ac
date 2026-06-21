@@ -2,8 +2,10 @@ package ec.edu.uce.domain.model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -25,7 +27,7 @@ public class Pelicula {
     private String titulo;
     @Column(name = "peli_duracion")
     private Integer duracion;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinTable(name = "pelicula_categoria", joinColumns = @JoinColumn(name = "peca_id_pelicula"), inverseJoinColumns = @JoinColumn(name = "peca_id_categoria"))
     private List<Categoria> categorias;
     public Integer getId() {
@@ -52,6 +54,13 @@ public class Pelicula {
     public void setCategorias(List<Categoria> categorias) {
         this.categorias = categorias;
     }
-    
+    @Override
+    public String toString() {
+        List<String> titulosCategotias = (categorias!= null)
+                ? categorias.stream().map(Categoria::getNombre).toList()
+                : null;
+
+        return "Pelicula [id=" + id + ", titulo=" + titulo + ", categorias=" + titulosCategotias + "]";
+    }
      
 }

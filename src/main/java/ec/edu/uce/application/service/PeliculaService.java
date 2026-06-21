@@ -13,4 +13,8 @@ public class PeliculaService {
     public void guardar(Pelicula pelicula){
         this.pr.crear(pelicula);
     }
+
+    public Pelicula buscarPorId(Integer id){
+        return this.pr.consultarPorId(id);
+    }
 }
