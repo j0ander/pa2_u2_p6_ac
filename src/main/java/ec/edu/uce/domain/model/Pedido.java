@@ -27,14 +27,15 @@ public class Pedido {
     private LocalDate fecha;
 
     @ManyToOne()
-    private Cliente cliente;
+    private Cliente cliente; 
 
     public Pedido(LocalDate fecha, Double total) {
         this.fecha = fecha;
         this.total = total;
     }
 
-    public Pedido(){}
+    public Pedido() {
+    }
 
     public Integer getId() {
         return id;

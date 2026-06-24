@@ -23,8 +23,10 @@ public class Main {
         @Inject
         private CuentaBancariaService cuentaBancariaService;
 
+
         @Inject
         private TransferenciaService transferenciaService;
+
 
         @Override
         public int run(String... args) {
@@ -32,12 +34,12 @@ public class Main {
             System.out.println("Conexión a base de datos");
 
             CuentaBancaria cuenta1 = new CuentaBancaria();
-            cuenta1.setNumeroCuenta("001");
+            cuenta1.setNumeroCuenta("005");
             cuenta1.setTitular("Anderson");
             cuenta1.setSaldo(new BigDecimal("1000"));
 
             CuentaBancaria cuenta2 = new CuentaBancaria();
-            cuenta2.setNumeroCuenta("002");
+            cuenta2.setNumeroCuenta("006");
             cuenta2.setTitular("Joel");
             cuenta2.setSaldo(new BigDecimal("500"));
 
@@ -45,11 +47,10 @@ public class Main {
             this.cuentaBancariaService.guardar(cuenta2);
 
             this.transferenciaService.transferencia(
-                    "001",
-                    "002",
+                    "003",
+                    "004",
                     new BigDecimal("10"));
 
-            System.out.println("Transferencia realizada correctamente");
 
             return 0;
         }

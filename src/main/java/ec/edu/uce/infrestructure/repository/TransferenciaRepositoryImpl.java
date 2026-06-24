@@ -48,7 +48,9 @@ public class TransferenciaRepositoryImpl implements TransferenciaRepository {
         transferencia.setMonto(monto);
         transferencia.setCuentaOrigen(origen);
         transferencia.setCuentaDestino(destino);
+ 
 
+        
         this.em.persist(transferencia);
     }
 
